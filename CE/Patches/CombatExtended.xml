@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Combat Extended (loaded only with CE, LoadFolders.xml). The wands keep their own single/burst switch and psycaster
+     gate; CE ballistics, armor and melee replace the vanilla numbers, taken from CE's own patches of the same guns:
+     single = CE bolt-action rifle (range 55, warmup 1.1, cooldown 1.17, spread 0.02), burst = CE heavy SMG (range 25,
+     warmup 0.6, 6-tick spacing, spread 0.14, sway 0.94) with the cooldown kept longer than single (1.29 = 1.17 x 1.65/1.5),
+     orbs = CE .45 ACP (12 damage, speed 67, AP 3.5 sharp / 10.86 blunt; white = CE charged 6x24mm, 15 / 25.6),
+     melee = CE mace x0.9 (wood). No ammo: every orb costs psyfocus (Verb_ShootWandCE, WandExtension.psyfocusPerShotCE). -->
+<Patch>
+
+  <!-- ===== Wands: verbs ===== -->
+  <Operation Class="PatchOperationAttributeSet">
+    <xpath>Defs/ThingDef[starts-with(defName,"FPW_Wand_")]/verbs/li</xpath>
+    <attribute>Class</attribute>
+    <value>CombatExtended.VerbPropertiesCE</value>
+  </Operation>
+  <Operation Class="PatchOperationAttributeSet">
+    <xpath>Defs/ThingDef[starts-with(defName,"FPW_Wand_")]/modExtensions/li[@Class="FairycorePixieWands.WandExtension"]/burstVerb</xpath>
+    <attribute>Class</attribute>
+    <value>CombatExtended.VerbPropertiesCE</value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[starts-with(defName,"FPW_Wand_")]/verbs/li/verbClass | Defs/ThingDef[starts-with(defName,"FPW_Wand_")]/modExtensions/li/burstVerb/verbClass</xpath>
+    <value>
+      <verbClass>FairycorePixieWands.CE.Verb_ShootWandCE</verbClass>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[starts-with(defName,"FPW_Wand_")]/verbs/li/warmupTime</xpath>
+    <value><warmupTime>1.1</warmupTime></value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[starts-with(defName,"FPW_Wand_")]/verbs/li/range</xpath>
+    <value><range>55</range></value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[starts-with(defName,"FPW_Wand_")]/verbs/li</xpath>
+    <value><recoilAmount>0.5</recoilAmount></value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[starts-with(defName,"FPW_Wand_")]/modExtensions/li/burstVerb/warmupTime</xpath>
+    <value><warmupTime>0.6</warmupTime></value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[starts-with(defName,"FPW_Wand_")]/modExtensions/li/burstVerb/range</xpath>
+    <value><range>25</range></value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[starts-with(defName,"FPW_Wand_")]/modExtensions/li/burstVerb/ticksBetweenBurstShots</xpath>
+    <value><ticksBetweenBurstShots>6</ticksBetweenBurstShots></value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[starts-with(defName,"FPW_Wand_")]/modExtensions/li/burstVerb</xpath>
+    <value><recoilAmount>0.8</recoilAmount></value>
+  </Operation>
+
+  <!-- ===== Wands: stats (single mode in statBases, burst values in burstStats; StatPart_WandMode switches) ===== -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[@Name="FPW_WandBase"]/statBases/RangedWeapon_Cooldown</xpath>
+    <value><RangedWeapon_Cooldown>1.17</RangedWeapon_Cooldown></value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[@Name="FPW_WandBase"]/statBases</xpath>
+    <value>
+      <SightsEfficiency>1</SightsEfficiency>
+      <ShotSpread>0.02</ShotSpread>
+      <SwayFactor>1.07</SwayFactor>
+      <Bulk>1</Bulk>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[starts-with(defName,"FPW_Wand_")]/modExtensions/li/burstStats</xpath>
+    <value>
+      <burstStats>
+        <ShotSpread>0.14</ShotSpread>
+        <SwayFactor>0.94</SwayFactor>
+        <RangedWeapon_Cooldown>1.29</RangedWeapon_Cooldown>
+      </burstStats>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <success>Always</success>
+    <xpath>Defs/StatDef[defName="ShotSpread" or defName="SwayFactor"]/parts</xpath>
+    <value>
+      <li Class="FairycorePixieWands.StatPart_WandMode" />
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <success>Always</success>
+    <xpath>Defs/StatDef[(defName="ShotSpread" or defName="SwayFactor") and not(parts)]</xpath>
+    <value>
+      <parts>
+        <li Class="FairycorePixieWands.StatPart_WandMode" />
+      </parts>
+    </value>
+  </Operation>
+
+  <!-- ===== Wands: melee (CE mace x0.9 wood) and CE weapon tags ===== -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[@Name="FPW_WandBase"]/tools</xpath>
+    <value>
+      <tools>
+        <li Class="CombatExtended.ToolCE">
+          <label>handle</label>
+          <capacities>
+            <li>Poke</li>
+          </capacities>
+          <power>1.8</power>
+          <chanceFactor>0.33</chanceFactor>
+          <cooldownTime>1.59</cooldownTime>
+          <armorPenetrationBlunt>0.56</armorPenetrationBlunt>
+          <linkedBodyPartsGroup>Handle</linkedBodyPartsGroup>
+        </li>
+        <li Class="CombatExtended.ToolCE">
+          <label>shaft</label>
+          <labelUsedInLogging>false</labelUsedInLogging>
+          <capacities>
+            <li>Blunt</li>
+          </capacities>
+          <power>13.5</power>
+          <cooldownTime>1.9</cooldownTime>
+          <armorPenetrationBlunt>5.06</armorPenetrationBlunt>
+          <linkedBodyPartsGroup>Head</linkedBodyPartsGroup>
+        </li>
+      </tools>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[@Name="FPW_WandBase"]/weaponTags</xpath>
+    <value>
+      <li>CE_Sidearm</li>
+      <li>CE_OneHandedWeapon</li>
+    </value>
+  </Operation>
+
+  <!-- ===== Orbs: CE projectiles ===== -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[@Name="FPW_OrbBase"]/thingClass</xpath>
+    <value><thingClass>FairycorePixieWands.CE.Projectile_WandOrbCE</thingClass></value>
+  </Operation>
+  <Operation Class="PatchOperationAttributeSet">
+    <xpath>Defs/ThingDef[@Name="FPW_OrbBase" or starts-with(defName,"FPW_Orb_")]/projectile</xpath>
+    <attribute>Class</attribute>
+    <value>CombatExtended.ProjectilePropertiesCE</value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[@Name="FPW_OrbBase"]/projectile/damageAmountBase</xpath>
+    <value><damageAmountBase>12</damageAmountBase></value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[@Name="FPW_OrbBase"]/projectile/speed</xpath>
+    <value><speed>67</speed></value>
+  </Operation>
+  <!-- A glowing orb: no CE height shadow (CE draws a dark copy of the texture below the projectile) and no casings. -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[@Name="FPW_OrbBase"]/projectile</xpath>
+    <value>
+      <castShadow>false</castShadow>
+      <dropsCasings>false</dropsCasings>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationRemove">
+    <xpath>Defs/ThingDef[starts-with(defName,"FPW_Orb_")]/projectile/armorPenetrationBase</xpath>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[starts-with(defName,"FPW_Orb_") and defName!="FPW_Orb_White"]/projectile</xpath>
+    <value>
+      <armorPenetrationSharp>3.5</armorPenetrationSharp>
+      <armorPenetrationBlunt>10.86</armorPenetrationBlunt>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="FPW_Orb_White"]/projectile</xpath>
+    <value>
+      <armorPenetrationSharp>15</armorPenetrationSharp>
+      <armorPenetrationBlunt>25.6</armorPenetrationBlunt>
+    </value>
+  </Operation>
+
+</Patch>

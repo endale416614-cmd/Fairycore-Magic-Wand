@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Orb impact splash (hit or miss): an expanding flash of light plus a few sparks, tinted with the orb's colour in code
+       (OrbExtension.Splash). -->
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>FPW_OrbSplash</defName>
+    <graphicData>
+      <texPath>FairycorePixieWands/Projectiles/OrbHalo</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.03</fadeInTime>
+    <solidTime>0.06</solidTime>
+    <fadeOutTime>0.45</fadeOutTime>
+    <growthRate>3</growthRate>
+  </FleckDef>
+
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>FPW_OrbSpark</defName>
+    <graphicData>
+      <texPath>FairycorePixieWands/Projectiles/OrbHalo</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0</fadeInTime>
+    <solidTime>0.1</solidTime>
+    <fadeOutTime>0.35</fadeOutTime>
+  </FleckDef>
+
+</Defs>

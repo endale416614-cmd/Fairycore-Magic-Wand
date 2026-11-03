@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Vanilla keeps these parts on the abstract AccuracyBase, so the second operation is the one that usually
+     applies (a child <parts> list is appended to the inherited one); the first covers mods that add parts directly.
+     A wand in burst mode has burst accuracy and cooldown (StatPart_WandMode; no effect on anything else). -->
+<Patch>
+  <Operation Class="PatchOperationAdd">
+    <success>Always</success>
+    <xpath>Defs/StatDef[defName="AccuracyTouch" or defName="AccuracyShort" or defName="AccuracyMedium" or defName="AccuracyLong" or defName="RangedWeapon_Cooldown"]/parts</xpath>
+    <value>
+      <li Class="FairycorePixieWands.StatPart_WandMode" />
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <success>Always</success>
+    <xpath>Defs/StatDef[(defName="AccuracyTouch" or defName="AccuracyShort" or defName="AccuracyMedium" or defName="AccuracyLong" or defName="RangedWeapon_Cooldown") and not(parts)]</xpath>
+    <value>
+      <parts>
+        <li Class="FairycorePixieWands.StatPart_WandMode" />
+      </parts>
+    </value>
+  </Operation>
+</Patch>

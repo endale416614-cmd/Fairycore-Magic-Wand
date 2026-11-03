@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- With Eltex in the game (VPE_Eltex, Vanilla Psycasts Expanded - the psychic-conduit mineral) the wands are made from
+       wood and Eltex instead of wood alone. Keyed on the Eltex def itself, so it works whatever mod
+       list provides it and does nothing without it. Patches run before inheritance, so the abstract base is enough. -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="VPE_Eltex"]</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/ThingDef[@Name="FPW_WandBase"]/costList</xpath>
+      <value>
+        <costList>
+          <WoodLog>25</WoodLog>
+          <VPE_Eltex>2</VPE_Eltex>
+        </costList>
+      </value>
+    </match>
+  </Operation>
+</Patch>

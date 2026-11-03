@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <FPW.ModeSingle>Single shot</FPW.ModeSingle>
+  <FPW.ModeBurst>Burst</FPW.ModeBurst>
+  <FPW.ModeDesc>Switch the wand's fire mode.\n\nSingle shot: one orb at a time, long range and high accuracy.\nBurst: three orbs, shorter range and lower accuracy.</FPW.ModeDesc>
+  <FPW.ModeLocked>Cannot switch modes mid-burst.</FPW.ModeLocked>
+  <FPW.NoPsylink>{PAWN_nameDef} has no psylink or psycast. In {PAWN_possessive} hand the wand is only a stick.</FPW.NoPsylink>
+  <FPW.NoPsyfocus>{PAWN_nameDef} does not have enough psyfocus to cast.</FPW.NoPsyfocus>
+  <FPW.StatBurst>Burst mode</FPW.StatBurst>
+</LanguageData>

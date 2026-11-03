@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Fairycore - Magic Wand</name>
+  <author>Faeris</author>
+  <packageId>homebrew.fairycorepixiewands</packageId>
+  <!-- 2.0: performance + size pass. 2.01: tidier comments. -->
+  <modVersion>2.02</modVersion>
+  <supportedVersions>
+    <li>1.6</li>
+    <li>1.7</li>
+  </supportedVersions>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+      <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>brrainz.harmony</li>
+    <li>Ludeon.RimWorld.Royalty</li>
+  </loadAfter>
+  <description>
+Fairycore - Magic Wand adds five small wands that shape a psycaster's focus into glowing orbs, each of its own element.
+
+THE WANDS
+
+- Silver serpent wand (white): crackling orbs that pierce armor, burn with lightning and stun mechanoids.
+- Elder wand (green): burns and poisons, 5% toxic buildup per hit.
+- Vine wand (yellow): splashes the target with burning acid.
+- Holly wand (red): sets the target alight, 5% heatstroke per hit.
+- Ivory wand (blue): bites with frostbite, 5% hypothermia per hit.
+
+Every orb staggers what it hits, up to the size of a muffalo.
+
+PSYCHIC SENSITIVITY
+
+The more psychically sensitive the caster, the fiercer the elements, up to three times as strong. The orb itself always hits the same.
+
+FIRE MODES
+
+A button beside the wand switches between:
+- Single shot: slow and steady, like a bolt-action rifle.
+- Burst: three quick orbs, like a heavy SMG.
+
+The wand glows in its orb's colour as it is cast, and every orb bursts into light where it lands.
+
+PSYCASTERS ONLY
+
+Only a psylinked pawn can channel a wand (Vanilla Psycasts Expanded psycasters count too). In anyone else's hands it is just a stick, about as good as a wooden mace.
+
+A favourite of the pixies of Fairycore - Spirit Wings, but any psycaster can wield one.
+
+DETAILS
+
+- Medieval tech: researched with Smithing and made at a smithy from wood (wood and Eltex with Vanilla Psycasts Expanded).
+- Not carried by NPCs; traders may stock them.
+- Combat Extended: supported. No ammo needed: each orb costs 1% psyfocus instead. Without CE a wand never uses psyfocus.
+- Royalty: needed in practice, since psylinks come from Royalty (or Vanilla Psycasts Expanded).
+- Requires Harmony.
+- Safe to add to an existing save.
+
+CREDITS
+
+- Faeris
+  </description>
+</ModMetaData>

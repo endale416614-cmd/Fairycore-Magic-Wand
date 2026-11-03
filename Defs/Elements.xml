@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- White orb: electrical burns (Core has the hediff; the matching DamageDef only ships with Anomaly). -->
+  <DamageDef ParentName="Flame">
+    <defName>FPW_ElectricalBurn</defName>
+    <label>electrical burn</label>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <deathMessage>{0} has died from electrical burns.</deathMessage>
+    <hediff>ElectricalBurn</hediff>
+    <scaleDamageToBuildingsBasedOnFlammability>false</scaleDamageToBuildingsBasedOnFlammability>
+  </DamageDef>
+
+  <!-- Blue orb: a frostbite injury that counts as an attack and is stopped by heat armor, unlike vanilla's
+       environmental Frostbite (no armor, not violence). -->
+  <DamageDef>
+    <defName>FPW_Frostbite</defName>
+    <label>frostbite</label>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} has frozen to death.</deathMessage>
+    <hediff>Frostbite</hediff>
+    <armorCategory>Heat</armorCategory>
+    <makesBlood>false</makesBlood>
+    <canInterruptJobs>false</canInterruptJobs>
+    <canUseDeflectMetalEffect>false</canUseDeflectMetalEffect>
+    <defaultArmorPenetration>0</defaultArmorPenetration>
+  </DamageDef>
+
+  <!-- Yellow orb: acid on the target that burns the skin for 3 seconds; another hit restarts the timer. -->
+  <HediffDef>
+    <defName>FPW_AcidSplash</defName>
+    <label>acid</label>
+    <description>Corrosive acid from a wand's orb, eating into the skin. It burns for a few seconds before it is spent.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.9, 0.85, 0.3)</defaultLabelColor>
+    <isBad>true</isBad>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>180~180</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+      <li Class="HediffCompProperties_DisappearsOnDeath" />
+      <li Class="FairycorePixieWands.HediffCompProperties_AcidSplash">
+        <intervalTicks>60</intervalTicks>
+        <amount>2~3</amount>
+        <damage>AcidBurn</damage>
+      </li>
+    </comps>
+  </HediffDef>
+
+</Defs>

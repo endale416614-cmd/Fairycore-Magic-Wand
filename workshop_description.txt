@@ -1,0 +1,42 @@
+[h1]Fairycore - Magic Wand[/h1]
+
+Five small wands that shape a psycaster's focus into glowing orbs, each of its own element.
+
+[h2]The wands[/h2]
+[list]
+[*][b]Silver serpent wand[/b] (white): crackling orbs that pierce armor, burn with lightning and stun mechanoids.
+[*][b]Elder wand[/b] (green): burns and poisons, 5% toxic buildup per hit.
+[*][b]Vine wand[/b] (yellow): splashes the target with burning acid.
+[*][b]Holly wand[/b] (red): sets the target alight, 5% heatstroke per hit.
+[*][b]Ivory wand[/b] (blue): bites with frostbite, 5% hypothermia per hit.
+[/list]
+Every orb staggers what it hits, up to the size of a muffalo.
+
+[h2]Psychic sensitivity[/h2]
+The more psychically sensitive the caster, the fiercer the elements, up to three times as strong. The orb itself always hits the same.
+
+[h2]Fire modes[/h2]
+A button beside the wand switches between:
+[list]
+[*][b]Single shot[/b]: slow and steady, like a bolt-action rifle.
+[*][b]Burst[/b]: three quick orbs, like a heavy SMG.
+[/list]
+The wand glows in its orb's colour as it is cast, and every orb bursts into light where it lands.
+
+[h2]Psycasters only[/h2]
+Only a psylinked pawn can channel a wand (Vanilla Psycasts Expanded psycasters count too). In anyone else's hands it is just a stick, about as good as a wooden mace.
+
+A favourite of the pixies of Fairycore - Spirit Wings, but any psycaster can wield one.
+
+[h2]Details[/h2]
+[list]
+[*]Medieval tech: researched with Smithing and made at a smithy from wood (wood and Eltex with Vanilla Psycasts Expanded).
+[*]Not carried by NPCs; traders may stock them.
+[*]Combat Extended: supported. No ammo needed: each orb costs 1% psyfocus instead. Without CE a wand never uses psyfocus.
+[*]Royalty: needed in practice, since psylinks come from Royalty (or Vanilla Psycasts Expanded).
+[*]Requires Harmony.
+[*]Safe to add to an existing save.
+[/list]
+
+[h2]Credits[/h2]
+Faeris
